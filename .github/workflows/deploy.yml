@@ -5,9 +5,10 @@ on :
   workflow_dispatch:
 
 jobs:
-  ci:
-    name: "Integration continu"
+  deploy:
+    name: "Integration continue CI/CD"
     runs_on: ubuntu-latest
+    environment: dev
 
     steps:
       - name: Checkout
