@@ -7,7 +7,7 @@ on :
 jobs:
   deploy:
     name: "Integration continue CI/CD"
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     environment: dev
 
     steps:
@@ -17,21 +17,22 @@ jobs:
      - name: Setup terraform
        uses: hashicorp/setup-terraform@v1
 
-    - name: Init
-      run: terraform init
-      working-directory: environments/dev
+     - name: Init
+       run: terraform init
+       working-directory: environments/dev
 
-    - name: Format
-      run: terraform fmt -recursive -check
-      working-directory: environments/dev
+     - name: Format
+       run: terraform fmt -recursive -check
+       working-directory: environments/dev
 
-    - name: Validate
-      run: terraform validate
-      working-directory: environments/dev
+     - name: Validate
+       run: terraform validate
+       working-directory: environments/dev
 
-    - name: Plan
-      run: terraform plan -input-false
-      working-directory: environments/dev
+     - name: Plan
+       run: terraform plan -input=false
+       working-directory: environments/dev
 
-   -  name: Apply
-      run: terraform apply
+     - name: Apply
+       run: terraform apply -auto-approve
+       working-directory: environments/dev
